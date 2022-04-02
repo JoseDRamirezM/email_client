@@ -16,7 +16,7 @@ router.get('/email', (req, res) => {
 router.get('/inbox', async (req, res) => {
     const list = await pop3_client.UIDL();
     list.forEach( async element => {
-        let retrieve = await pop3_client.RETR(list[0]);
+        let retrieve = await pop3_client.RETR(element[0]);
         console.log(retrieve);
     });
     res.render('inbox', { title: 'Bandeja de entrada' });
